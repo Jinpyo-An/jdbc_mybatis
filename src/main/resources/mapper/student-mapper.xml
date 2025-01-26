@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exercise.student.StudentService">
+    <select id="getStudents"
+            resultType="exercise.student.Student">
+        SELECT *
+        FROM student
+    </select>
+    <select id="getStudentByNo"
+            parameterType="string"
+            resultType="exercise.student.Student">
+        SELECT *
+        FROM student
+        WHERE no = #{no}
+    </select>
+    <select id="getStudentByName"
+            parameterType="string"
+            resultType="exercise.student.Student">
+        SELECT *
+        FROM student
+        WHERE name = #{name}
+    </select>
+    <select id="getStudentByBirthday"
+            parameterType="string"
+            resultType="exercise.student.Student">
+        SELECT *
+        FROM student
+        WHERE birthday = #{birthday}::date
+    </select>
+
+    <insert id="insertStudent"
+            parameterType="exercise.student.Student">
+        INSERT
+        INTO student(no, name, birthday)
+        VALUES (#{no}, #{name}, #{birthday})
+    </insert>
+    <insert id="insertStudentMulti"
+            parameterType="exercise.student.Student">
+        INSERT
+        INTO student(no, name, birthday)
+        VALUES
+            <foreach collection="array" item="student" separator=",">
+                (#{student.no}, #{student.name}, #{student.birthday})
+            </foreach>
+    </insert>
+
+    <update id="updateStudent"
+            parameterType="exercise.student.Student">
+        UPDATE student
+        SET birthday = #{birthday}::date
+        WHERE no = #{no}
+    </update>
+
+    <delete id="deleteStudentByNo"
+            parameterType="string">
+        DELETE
+        FROM student
+        WHERE no = #{no}
+    </delete>
+</mapper>

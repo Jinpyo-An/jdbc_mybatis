@@ -1,16 +1,15 @@
 package exercise;
 
-import exercise.common.PostgresAccess;
-import exercise.student.PostgresStudentService;
+import exercise.student.MyBatisStudentService;
 import exercise.student.Student;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class AppInitJDBC {
+public class AppInitMyBatis {
 
     public static void main(String[] args) {
-        final var studentService = new PostgresStudentService();
+        final var studentService = new MyBatisStudentService();
 
         var resultCount = 0;
         Student result;
@@ -24,7 +23,7 @@ public class AppInitJDBC {
 //        System.out.println("");
 
 //        System.out.println("02. 학번이 20110101인 학생을 조회합니다.");
-//        result = studentService.getStudentByNo("20110301");
+//        result = studentService.getStudentByNo("20110101");
 //        System.out.println("[학번] " + result.getNo() + " || [이름] " + result.getName() + " || [생일] " + result.getBirthday());
 //        System.out.println("");
 
@@ -68,11 +67,6 @@ public class AppInitJDBC {
 //        System.out.println(resultCount + "명의 학생이 등록되었습니다.");
 //        System.out.println("");
 
-//        System.out.println("08. 학번 20110401인 학생의 생일을 1990-03-21로 변경합니다.");
-//        resultCount = studentService.updateStudentBirthdayByNo("20110401", "1990-03-21");
-//        System.out.println(resultCount + "명의 학생 정보가 변경되었습니다.");
-//        System.out.println("");
-
 //        System.out.println("09. 학번이 20110401인 학생의 생일을 1990-03-25으로 변경합니다.");
 //        resultCount = studentService.updateStudent(new Student("20110401", LocalDate.of(1990,3,25)));
 //        System.out.println(resultCount + "명의 학생 정보가 변경되었습니다.");
@@ -94,24 +88,25 @@ public class AppInitJDBC {
 //        System.out.println(resultCount + "명의 학생 정보가 변경되었습니다.");
 //        System.out.println("");
 
-//        System.out.println("11. 학번이 20110401인 학생을 목록에서 제거합니다.");
-//        resultCount = studentService.deleteStudentByNo("20110401");
-//        System.out.println(resultCount + "명의 학생 정보가 삭제되었습니다.");
-//        System.out.println("");
+        System.out.println("11. 학번이 20110401인 학생을 목록에서 제거합니다.");
+        resultCount = studentService.deleteStudentByNo("20110401");
+        System.out.println(resultCount + "명의 학생 정보가 삭제되었습니다.");
+        System.out.println("");
 
-//        System.out.println("12. 학번이 20110501, 20110601, 20110701, 20110801인 학생을 목록에서 제거합니다.");
-//        Student[] students = new Student[]{
-//                new Student("20110501"),
-//                new Student("20110601"),
-//                new Student("20110701"),
-//                new Student("20110801"),
-//                new Student("20110901"),
-//                new Student("20111001"),
-//                new Student("20111101"),
-//                new Student("20111201")
-//        };
-//        resultCount = studentService.deleteStudentNoMultiBatch(students);
-//        System.out.println(resultCount + "명의 학생 정보가 삭제되었습니다.");
-//        System.out.println("");
+        System.out.println("12. 학번이 20110501, 20110601, 20110701, 20110801인 학생을 목록에서 제거합니다.");
+        Student[] students = new Student[]{
+                new Student("20110501"),
+                new Student("20110601"),
+                new Student("20110701"),
+                new Student("20110801"),
+                new Student("20110901"),
+                new Student("20111001"),
+                new Student("20111101"),
+                new Student("20111201")
+        };
+        resultCount = studentService.deleteStudentNoMultiBatch(students);
+        System.out.println(resultCount + "명의 학생 정보가 삭제되었습니다.");
+        System.out.println("");
+
     }
 }

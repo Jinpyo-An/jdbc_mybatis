@@ -42,4 +42,5 @@ bin/
 .DS_Store
 
 ### Database Connection Information File ###
-src/main/java/exercise/common/PostgresAccess.java
+src/main/java/exercise/common
+src/main/resources/mybatis-config.xml
