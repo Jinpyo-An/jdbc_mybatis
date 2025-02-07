@@ -4,10 +4,12 @@ import exercise.common.MyBatisAccess;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MyBatisStudentService implements StudentService {
 
     final SqlSessionFactory sqlSessionFactory = MyBatisAccess.getSqlSessionFactory();
