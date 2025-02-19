@@ -13,8 +13,13 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.4.2")
+
     implementation("org.postgresql:postgresql:42.7.5")
     implementation("org.mybatis:mybatis:3.5.19")
+
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

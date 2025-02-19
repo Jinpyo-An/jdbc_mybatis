@@ -1,0 +1,8 @@
+Java로 JWT 구현하기
+1. JWT Payload가 필요하다
+   - Payload 구성 요소
+     1. userId
+     2. username
+     3. exp
+     4. iat
+2. SECRET KEY가 필요하다.
